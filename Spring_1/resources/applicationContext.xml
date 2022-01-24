@@ -7,8 +7,35 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- Set property file -->
+    <context:property-placeholder location="classpath:app.properties"/>
+
+    <!-- Usual bean -->
     <bean id="pet"
           class="com.spring.Cat">
+    </bean>
+
+    <!-- Bean with dependency
+    <bean id = "person"
+          class="com.spring.Person">
+        <constructor-arg ref="pet"/>  - using constructor
+    </bean>
+    -->
+
+    <!-- Bean with dependency
+    <bean id = "person"
+          class="com.spring.Person">
+        <property name="pet" ref="pet"/>  - using setter (hardcode)
+        <property name="name" value="Yuliya"/>
+        <property name="age" value="20"/>
+    </bean>
+    -->
+    <!-- Bean with dependency -->
+    <bean id = "person"
+          class="com.spring.Person">
+        <property name="pet" ref="pet"/>  <!-- using properties -->
+        <property name="name" value="${person.name}"/>
+        <property name="age" value="${person.age}"/>
     </bean>
 
 </beans>
