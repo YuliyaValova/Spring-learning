@@ -12,7 +12,10 @@
 
     <!-- Usual bean -->
     <bean id="pet"
-          class="com.spring.Cat">
+          class="com.spring.Cat"
+          init-method="init"
+          destroy-method="destroy">
+        <!-- Any access modificator for init and destroy -->
     </bean>
 
     <!-- Bean with dependency
